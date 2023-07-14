@@ -6,7 +6,7 @@ url = "https://fapi.binance.com/fapi/v1/depth"
 
 # Define the symbol and optional limit
 symbol = "BTCUSDT"
-limit = 1000
+limit = 100
 
 # Define the parameters for the API request
 params = {
@@ -27,8 +27,8 @@ if response.status_code == 200:
     asks = data["asks"]
 
     # Filter bids and asks with quantity > 25
-    filtered_bids = [(price, quantity) for price, quantity in bids if float(quantity) > 25]
-    filtered_asks = [(price, quantity) for price, quantity in asks if float(quantity) > 25]
+    filtered_bids = [(price, quantity) for price, quantity in bids if float(quantity) > 10]
+    filtered_asks = [(price, quantity) for price, quantity in asks if float(quantity) > 10]
 
     # Sort filtered bids and asks by quantity
     sorted_filtered_bids = sorted(filtered_bids, key=lambda x: float(x[1]), reverse=True)
